@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Client\Tests\Unit;
+namespace OpenSearch\Laravel\Client\Tests\Unit;
 
-use Elastic\Client\ClientBuilder;
-use Elastic\Elasticsearch\Client;
 use ErrorException;
+use OpenSearch\Client;
+use OpenSearch\Laravel\Client\ClientBuilder;
 use Orchestra\Testbench\TestCase;
 
 /**
- * @covers \Elastic\Client\ClientBuilder
+ * @covers \OpenSearch\Client\ClientBuilder
  */
 final class ClientBuilderTest extends TestCase
 {
@@ -18,7 +18,7 @@ final class ClientBuilderTest extends TestCase
     {
         parent::setUp();
 
-        $this->app['config']->set('elastic.client', [
+        $this->app['config']->set('opensearch.client', [
             'default' => 'read',
             'connections' => [
                 'read' => [
@@ -53,9 +53,9 @@ final class ClientBuilderTest extends TestCase
 
     private function assertHost(Client $client, string $host): void
     {
-        $transport = $client->getTransport();
-        $node = $transport->getNodePool()->nextNode();
+        $transport = $client->transport;
+        $node = $transport->connectionPool->nextConnection();
 
-        $this->assertSame($host, (string)$node->getUri());
+        $this->assertSame($host, "{$node->getTransportSchema()}://{$node->getHost()}");
     }
 }

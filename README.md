@@ -1,20 +1,6 @@
-# Elastic Client
+# OpenSearch Client
 
-[![Latest Stable Version](https://poser.pugx.org/babenkoivan/elastic-client/v/stable)](https://packagist.org/packages/babenkoivan/elastic-client)
-[![Total Downloads](https://poser.pugx.org/babenkoivan/elastic-client/downloads)](https://packagist.org/packages/babenkoivan/elastic-client)
-[![License](https://poser.pugx.org/babenkoivan/elastic-client/license)](https://packagist.org/packages/babenkoivan/elastic-client)
-[![Tests](https://github.com/babenkoivan/elastic-client/workflows/Tests/badge.svg)](https://github.com/babenkoivan/elastic-client/actions?query=workflow%3ATests)
-[![Code style](https://github.com/babenkoivan/elastic-client/workflows/Code%20style/badge.svg)](https://github.com/babenkoivan/elastic-client/actions?query=workflow%3A%22Code+style%22)
-[![Static analysis](https://github.com/babenkoivan/elastic-client/workflows/Static%20analysis/badge.svg)](https://github.com/babenkoivan/elastic-client/actions?query=workflow%3A%22Static+analysis%22)
-[![Donate PayPal](https://img.shields.io/badge/donate-paypal-blue)](https://paypal.me/babenkoi)
-
-<p align="center">
-    <a href="https://ko-fi.com/ivanbabenko" target="_blank"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support the project!"></a>
-</p>
-
----
-
-The official PHP Elasticsearch client integrated with Laravel.
+The official PHP OpenSearch client integrated with Laravel.
 
 ## Contents
 
@@ -25,17 +11,17 @@ The official PHP Elasticsearch client integrated with Laravel.
 
 ## Compatibility
 
-The current version of Elastic Client has been tested with the following configuration:
+The current version of OpenSearch Client has been tested with the following configuration:
 
 * PHP 7.4-8.x
-* Elasticsearch 8.x 
+* Opensearch 1.x 
 
 ## Installation
 
 The library can be installed via Composer:
 
 ```bash
-composer require babenkoivan/elastic-client
+composer require friendsofcat/opensearch-client
 ```
 
 ## Configuration
@@ -43,19 +29,18 @@ composer require babenkoivan/elastic-client
 To change the client settings you need to publish the configuration file first:
 
 ```bash
-php artisan vendor:publish --provider="Elastic\Client\ServiceProvider"
+php artisan vendor:publish --provider="OpenSearch\Laravel\Client\ServiceProvider"
 ```
 
-In the newly created `config/elastic.client.php` file you can define the default connection name and describe multiple 
-connections using configuration hashes. You can read more about building the client from a configuration hash [here](https://www.elastic.co/guide/en/elasticsearch/client/php-api/current/node_pool.html#config-hash).
+In the newly created `config/opensearch.client.php` file you can define the default connection name.
 
 ```php
 return [
-    'default' => env('ELASTIC_CONNECTION', 'default'),
+    'default' => env('OPENSEARCH_CONNECTION', 'default'),
     'connections' => [
         'default' => [
             'hosts' => [
-                env('ELASTIC_HOST', 'localhost:9200'),
+                env('OPENSEARCH_HOST', 'localhost:9200'),
             ],
             // you can also set HTTP client options (which is Guzzle by default) as follows
             'httpClientOptions' => [
@@ -69,8 +54,8 @@ return [
 If you need more control over the client creation, you can create your own client builder:
 
 ```php
-// see Elastic\Client\ClientBuilder for the reference
-class MyClientBuilder implements Elastic\Client\ClientBuilderInterface
+// see OpenSearch\Laravel\Client\ClientBuilder for the reference
+class MyClientBuilder implements OpenSearch\Laravel\Client\ClientBuilderInterface
 {
     public function default(): Client
     {
@@ -98,13 +83,13 @@ class MyAppServiceProvider extends Illuminate\Support\ServiceProvider
 
 ## Usage
 
-Use `Elastic\Client\ClientBuilderInterface` to get access to the client instance:
+Use `OpenSearch\Laravel\Client\ClientBuilderInterface` to get access to the client instance:
 
 ```php
 namespace App\Console\Commands;
 
-use Elastic\Elasticsearch\Client;
-use Elastic\Client\ClientBuilderInterface;
+use OpenSearch\Client;
+use OpenSearch\Laravel\Client\ClientBuilderInterface;
 use Illuminate\Console\Command;
 
 class CreateIndex extends Command

@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Client;
+namespace OpenSearch\Laravel\Client;
 
-use Elastic\Elasticsearch\Client;
+use OpenSearch\Client;
 
 interface ClientBuilderInterface
 {

@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Client;
+namespace OpenSearch\Laravel\Client;
 
-use Elastic\Elasticsearch\Client;
-use Elastic\Elasticsearch\ClientBuilder as BaseClientBuilder;
 use ErrorException;
+use OpenSearch\Client;
+use OpenSearch\ClientBuilder as BaseClientBuilder;
 
 class ClientBuilder implements ClientBuilderInterface
 {
@@ -12,7 +12,7 @@ class ClientBuilder implements ClientBuilderInterface
 
     public function default(): Client
     {
-        $name = config('elastic.client.default');
+        $name = config('opensearch.client.default');
 
         if (!is_string($name)) {
             throw new ErrorException('Default connection name is invalid or missing.');
@@ -27,7 +27,7 @@ class ClientBuilder implements ClientBuilderInterface
             return $this->cache[$name];
         }
 
-        $config = config('elastic.client.connections.' . $name);
+        $config = config('opensearch.client.connections.' . $name);
 
         if (!is_array($config)) {
             throw new ErrorException(sprintf(
