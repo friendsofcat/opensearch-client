@@ -52,5 +52,5 @@ jobs:
         run: composer require --no-interaction orchestra/testbench:^${{ matrix.testbench }} phpunit/phpunit:^${{ matrix.phpunit }}
 
       - name: Run tests
-        run: make test
+        run: composer test
 
