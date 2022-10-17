@@ -1,6 +1,12 @@
 name: Code style
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - "**"
+      - '!master' # excludes mainline
+    tags-ignore:
+      - "*.*"
 
 jobs:
   style-check:
