@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace Elastic\Client;
+namespace OpenSearch\Laravel\Client;
 
 use Illuminate\Support\ServiceProvider as AbstractServiceProvider;
 
@@ -15,7 +15,7 @@ final class ServiceProvider extends AbstractServiceProvider
     {
         parent::__construct($app);
 
-        $this->configPath = dirname(__DIR__) . '/config/elastic.client.php';
+        $this->configPath = dirname(__DIR__) . '/config/opensearch.client.php';
     }
 
     /**

@@ -1,10 +1,9 @@
 {
-    "name": "babenkoivan/elastic-client",
-    "description": "The official PHP Elasticsearch client integrated with Laravel",
+    "name": "friendsofcat/opensearch-client",
+    "description": "The official PHP OpenSearch client integrated with Laravel",
     "keywords": [
         "laravel",
-        "elastic",
-        "elasticsearch",
+        "opensearch",
         "client",
         "php"
     ],
@@ -16,29 +15,19 @@
             "email": "babenko.i.a@gmail.com"
         }
     ],
-    "funding": [
-        {
-            "type": "ko-fi",
-            "url": "https://ko-fi.com/ivanbabenko"
-        },
-        {
-            "type": "paypal",
-            "url": "https://paypal.me/babenkoi"
-        }
-    ],
     "autoload": {
         "psr-4": {
-            "Elastic\\Client\\": "src"
+            "OpenSearch\\Laravel\\Client\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Elastic\\Client\\Tests\\": "tests"
+            "OpenSearch\\Laravel\\Client\\Tests\\": "tests"
         }
     },
     "require": {
         "php": "^7.4 || ^8.0",
-        "elasticsearch/elasticsearch": "^8.0"
+        "opensearch-project/opensearch-php": "^1.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
@@ -46,14 +35,17 @@
         "friendsofphp/php-cs-fixer": "^3.8",
         "phpstan/phpstan": "^1.6"
     },
-    "config": {
-        "bin-dir": "bin"
-    },
     "extra": {
         "laravel": {
             "providers": [
-                "Elastic\\Client\\ServiceProvider"
+                "OpenSearch\\Laravel\\Client\\ServiceProvider"
             ]
         }
+    },
+    "scripts": {
+        "check-style": "./vendor/bin/php-cs-fixer fix --dry-run --allow-risky=yes",
+        "fix-style": "./vendor/bin/php-cs-fixer fix --allow-risky=yes",
+        "analyse": "./vendor/bin/phpstan analyse",
+        "test": "./vendor/bin/phpunit"
     }
 }

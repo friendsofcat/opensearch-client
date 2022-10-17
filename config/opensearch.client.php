@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
 return [
-    'default' => env('ELASTIC_CONNECTION', 'default'),
+    'default' => env('OPENSEARCH_CONNECTION', 'default'),
     'connections' => [
         'default' => [
             'hosts' => [
-                env('ELASTIC_HOST', 'localhost:9200'),
+                env('OPENSEARCH_HOST', 'localhost:9200'),
             ],
         ],
     ],
