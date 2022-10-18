@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - "**"
-      - '!master' # excludes mainline
+      - '!master' # excludes master
     tags-ignore:
       - "*.*"
 
 jobs:
   test:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         php: [7.4, 8.0, 8.1]

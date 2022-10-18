@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - "**"
-      - '!master' # excludes mainline
+      - '!master' # excludes master
     tags-ignore:
       - "*.*"
 
 jobs:
   style-check:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
