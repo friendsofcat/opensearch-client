@@ -13,6 +13,9 @@
         {
             "name": "Ivan Babenko",
             "email": "babenko.i.a@gmail.com"
+        },
+        {
+            "name": "Friends of Cat"
         }
     ],
     "autoload": {
@@ -43,9 +46,10 @@
         }
     },
     "scripts": {
-        "check-style": "./vendor/bin/php-cs-fixer fix --dry-run --allow-risky=yes",
+        "check-style": "./vendor/bin/php-cs-fixer fix --allow-risky=yes --dry-run --diff --show-progress=dots --verbose",
         "fix-style": "./vendor/bin/php-cs-fixer fix --allow-risky=yes",
         "analyse": "./vendor/bin/phpstan analyse",
-        "test": "./vendor/bin/phpunit"
+        "test": "./vendor/bin/phpunit --testdox",
+        "test-coverage": "./vendor/bin/phpunit --testdox --coverage-text"
     }
 }
