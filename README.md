@@ -5,7 +5,7 @@ The official PHP OpenSearch client integrated with Laravel.
 ## Contents
 
 * [Compatibility](#compatibility)
-* [Installation](#installation) 
+* [Installation](#installation)
 * [Configuration](#configuration)
 * [Usage](#usage)
 
@@ -14,7 +14,7 @@ The official PHP OpenSearch client integrated with Laravel.
 The current version of OpenSearch Client has been tested with the following configuration:
 
 * PHP 7.4-8.x
-* Opensearch 1.x 
+* Opensearch 2.x
 
 ## Installation
 

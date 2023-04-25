@@ -30,7 +30,7 @@
     },
     "require": {
         "php": "^7.4 || ^8.0",
-        "opensearch-project/opensearch-php": "^1.0"
+        "opensearch-project/opensearch-php": "^2.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
