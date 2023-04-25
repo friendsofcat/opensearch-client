@@ -53,7 +53,7 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install dependencies
-        run: composer require --dev --no-interaction orchestra/testbench:^${{ matrix.testbench }} phpunit/phpunit:^${{ matrix.phpunit }}
+        run: composer require --no-interaction orchestra/testbench:^${{ matrix.testbench }} phpunit/phpunit:^${{ matrix.phpunit }}
 
       - name: Run tests
         run: composer test
